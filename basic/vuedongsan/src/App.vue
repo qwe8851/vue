@@ -2,9 +2,18 @@
   <div class="menu">
     <a v-for="menu in menus" :key="menu" >{{ menu }}</a>
   </div>
-  <div v-for="(a, i) in products" :key="(a, i)" >
-    <h4>{{ products[i] }}</h4>
-    <p >{{ price[i] }}만원</p>
+  <div>
+    <h4>{{products[0]}}</h4>
+    <p>50만원</p>    <!-- 함수를 선언할때는 ()를 빼고 -->
+    <button @click="increase">허위매물신고</button><span>신고수 : {{신고수}}</span>
+  </div>
+  <div>
+    <h4>{{products[1]}}</h4>
+    <p>50만원</p>
+  </div>
+  <div>
+    <h4>{{products[2]}}</h4>
+    <p>50만원</p>
   </div>
 </template>
 
@@ -12,10 +21,16 @@
 export default {
   name: 'App',
   data(){
-    return {
+    return {    // 변수 만드는 공간
       menus : ['Home', 'Shop', 'About'],
       products : ['역삼동원룸', '천호동원룸', '마포구원룸'],
       price : [ 50, '가격은 아무거나'],
+      신고수 : 0
+    }
+  },
+  methods: {    // 함수 만드는 공간
+    increase(){
+      this.신고수++;
     }
   },
   components: {
@@ -36,8 +51,6 @@ export default {
   background: darkslateblue;
   padding: 15px;
   border-radius: 5px;
-}
-.menu a{
 }
 
 </style>
