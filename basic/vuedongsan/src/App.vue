@@ -1,6 +1,5 @@
 <template>
-<div>
-
+<span>
   <!-- 모달창 ui -->
   <div class="black-bg" v-if="모달창열렸니 == true">
     <div class="white-bg">
@@ -10,48 +9,30 @@
     </div>
   </div>
 
-
-
-
   <div class="menu">
     <a v-for="menu in menus" :key="menu" >{{ menu }}</a>
   </div>
-  <!-- 함수를 선언할때는 ()를 빼고 -->
-  <!-- <div>
-    <h4>{{products[0]}}</h4>
-    <p>50만원</p>
-    <button @click="신고수[0]++">허위매물신고</button><span>신고수 : {{신고수[0]}}</span>
+  <div v-for="(item, i) in 원룸들" :key="(item, i)">
+    <!-- <img v-bind:src= "require(`./assets/room${i}.jpg`)" class="room-img"/> -->
+    <img :src= "`${item.image}`" class="room-img"/>
+    <h4>{{item.title}}</h4>
+    <p>{{item.content}}</p>
+    <p>{{item.price}}</p>
   </div>
-  <div>
-    <h4>{{products[1]}}</h4>
-    <p>50만원</p>
-    <button @click="신고수[1]++">허위매물신고</button><span>신고수 : {{신고수[1]}}</span>
-  </div>
-  <div>
-    <h4>{{products[2]}}</h4>
-    <p>50만원</p>
-    <button @click="신고수[2]++">허위매물신고</button><span>신고수 : {{신고수[2]}}</span>
-  </div> -->
 
-  <div v-for="(item, index) in menus" :key="(item, index)">
-    <img v-bind:src= "require(`./assets/room${index}.jpg`)" class="room-img"/>
-    <h4 @click="모달창열렸니 = true">{{products[index]}}</h4>
-    <p>50만원</p>
-    <button @click="신고수[index]++">허위매물신고</button><span>신고수 : {{신고수[index]}}</span>
-  </div>
-</div>
+</span>
 </template>
 
 <script>
+import oneroom from "./assets/oneroom.js";
+
 export default {
   name: 'App',
   data(){
     return {    // 변수 만드는 공간
+      원룸들 : oneroom,
       모달창열렸니 : false,
       menus : ['Home', 'Shop', 'About'],
-      products : ['역삼동원룸', '천호동원룸', '마포구원룸'],
-      price : [ 50, '가격은 아무거나'],
-      신고수 : [0,0,0]
     }
   },
   methods: {    // 함수 만드는 공간
