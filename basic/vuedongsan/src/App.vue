@@ -1,36 +1,23 @@
 <template>
 <span>
-  <!-- 모달창 ui -->
-  <div class="black-bg" v-if="모달창열렸니 == true">
-    <div class="white-bg">
-      <h4>{{원룸들[누른거].title}}</h4>
-        <img :src="원룸들[누른거].image" style="width : 100%">
-        <h4>{{원룸들[누른거].title}}</h4>
-        <p>{{원룸들[누른거].content}}</p>
-        <p>{{원룸들[누른거].price}}</p>
-      <button @click="모달창열렸니 =false">닫기</button>
-    </div>
-  </div>
+  <!-- 모달창 -->
+  <Modal :원룸들="원룸들" :누른거="누른거" :모달창열렸니="모달창열렸니" />
 
   <!-- 할인 배너 -->
   <Discount/>
 
-  <div class="menu">
-    <a v-for="menu in menus" :key="menu" >{{ menu }}</a>
-  </div>
-  <div v-for="(item, i) in 원룸들" :key="i">
-    <img :src= "item.image" class="room-img"/>
-    <h4 @click="모달창열렸니 = true; 누른거 = i;">{{item.title}}</h4>
-    <!-- <p>{{item.content}}</p> -->
-    <p>{{item.price}}원</p>
-  </div>
+  <!-- Card -->
+  <Card :menus="menus" :원룸들="원룸들" :모달창열렸니="모달창열렸니" />
+
 
 </span>
 </template>
 
 <script>
 import oneroom from "./assets/oneroom.js";
-import Discount from "./Discount.vue";
+import Discount from "./components/Discount.vue";
+import Modal from "./components/Modal.vue";
+import Card from "./components/Card.vue";
 
 export default {
   name: 'App',
@@ -49,6 +36,8 @@ export default {
   },
   components: {
     Discount : Discount,  // es6 : 왼쪽오른쪽 항목이 같으므로 그냥 "Discount"만 사용해도 동작
+    Modal : Modal,
+    Card : Card, 
   }
 }
 </script>
