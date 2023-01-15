@@ -7,8 +7,13 @@
   <Discount/>
 
   <!-- Card -->
-  <Card :menus="menus" :원룸들="원룸들" :모달창열렸니="모달창열렸니" />
-
+  <div class="menu">
+    <a v-for="menu in menus" :key="menu" >{{ menu }}</a>
+  </div>
+  <!-- <div v-for="원룸 in 원룸들" :key="원룸">
+    <Card :원룸="원룸"/>
+  </div> -->
+  <Card :원룸="원룸" v-for="원룸 in 원룸들" :key="원룸" />
 
 </span>
 </template>
