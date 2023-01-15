@@ -3,7 +3,7 @@
   <!-- 모달창 ui -->
   <div class="black-bg" v-if="모달창열렸니 == true">
     <div class="white-bg">
-      <h4>상세페이지</h4>
+      <h4>{{원룸들[누른거].title}}</h4>
       <p>내용</p>
       <button @click="모달창열렸니 =false">닫기</button>
     </div>
@@ -12,12 +12,11 @@
   <div class="menu">
     <a v-for="menu in menus" :key="menu" >{{ menu }}</a>
   </div>
-  <div v-for="(item, i) in 원룸들" :key="(item, i)">
-    <!-- <img v-bind:src= "require(`./assets/room${i}.jpg`)" class="room-img"/> -->
-    <img :src= "`${item.image}`" class="room-img"/>
-    <h4>{{item.title}}</h4>
+  <div v-for="(item, i) in 원룸들" :key="i">
+    <img :src= "item.image" class="room-img"/>
+    <h4 @click="모달창열렸니 = true; 누른거 = i;">{{item.title}}</h4>
     <p>{{item.content}}</p>
-    <p>{{item.price}}</p>
+    <p>{{item.price}}원</p>
   </div>
 
 </span>
@@ -30,6 +29,7 @@ export default {
   name: 'App',
   data(){
     return {    // 변수 만드는 공간
+      누른거 : 0,
       원룸들 : oneroom,
       모달창열렸니 : false,
       menus : ['Home', 'Shop', 'About'],
