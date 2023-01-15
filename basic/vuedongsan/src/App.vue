@@ -13,7 +13,7 @@
   <!-- <div v-for="원룸 in 원룸들" :key="원룸">
     <Card :원룸="원룸"/>
   </div> -->
-  <Card :원룸="원룸" v-for="원룸 in 원룸들" :key="원룸" />
+  <Card @openModal="모달창열렸니=true; 누른거=$event" :원룸="원룸" v-for="원룸 in 원룸들" :key="원룸"/>
 
 </span>
 </template>
