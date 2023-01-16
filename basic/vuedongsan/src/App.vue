@@ -1,9 +1,9 @@
 <template>
 <span>
   <!-- 모달창 -->
-  <div class="start" :class="{end:모달창열렸니}"> <!--{글래스명:조건}-->  
+  <Transition name="fade">
     <Modal @closeModal="모달창열렸니=false" :원룸들="원룸들" :누른거="누른거" :모달창열렸니="모달창열렸니" />
-  </div>
+  </Transition>
   <!-- 할인 배너 -->
   <Discount/>
 
@@ -94,7 +94,7 @@ div{
   color: white;
   padding: 10px;
 }
-
+/* ui 애니메이션 주는 법 1 { class명 : 조건} */
 .start {
   opacity: 0;
   transition: all 1s;
@@ -102,5 +102,27 @@ div{
 .end {
   opacity: 1;
 }
+/* ui 애니메이션 주는 법 2 transition태그로 애니메이션 주기  */
+.fade-enter-from {   /* 시작 */
+  /* opacity: 0; */
+  transform: translateY(-1000px);
+}
+.fade-enter-active {    /* transition */
+  transition: all 1s;
+}
+.fade-enter-to {    /* 끝 */
+  /* opacity: 1; */
+  transform: translateY(0px);
 
+}
+/* 퇴장 애니메이션 */
+.fade-leave-from {
+  opacity: 1;
+}
+.fade-leave-active {
+  transition: all 1s;
+}
+.fade-leave-to {
+  opacity: 0;
+}
 </style>
