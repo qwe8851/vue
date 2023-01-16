@@ -1,8 +1,9 @@
 <template>
 <span>
   <!-- 모달창 -->
-  <Modal @closeModal="모달창열렸니=false" :원룸들="원룸들" :누른거="누른거" :모달창열렸니="모달창열렸니" />
-
+  <div class="start" :class="{end:모달창열렸니}"> <!--{글래스명:조건}-->  
+    <Modal @closeModal="모달창열렸니=false" :원룸들="원룸들" :누른거="누른거" :모달창열렸니="모달창열렸니" />
+  </div>
   <!-- 할인 배너 -->
   <Discount/>
 
@@ -92,6 +93,14 @@ div{
 .menu a{
   color: white;
   padding: 10px;
+}
+
+.start {
+  opacity: 0;
+  transition: all 1s;
+}
+.end {
+  opacity: 1;
 }
 
 </style>
