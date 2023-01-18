@@ -5,7 +5,7 @@
     <Modal @closeModal="모달창열렸니=false" :원룸들="원룸들" :누른거="누른거" :모달창열렸니="모달창열렸니" />
   </Transition>
   <!-- 할인 배너 -->
-  <Discount/>
+  <Discount v-if="showDiscount == true"/>
 
   <!-- Card -->
   <div class="menu">
@@ -32,6 +32,7 @@ export default {
   name: 'App',
   data(){
     return {    // 변수 만드는 공간
+      showDiscount : true,
       원룸들오리지널 : [...oneroom],
       원룸들 : oneroom,  // shallow copy
       누른거 : 0,
@@ -65,6 +66,11 @@ export default {
     sortBack(){
       this.원룸들 = [...this.원룸들오리지널];
     }
+  },
+  mounted(){  //mount 후 
+    setTimeout(()=>{  // setTimeout안에서 this.변수를 가져다 쓰기 위해 arrowF function을 씀 
+      this.showDiscount = false;
+    }, 2000)
   },
   components: {
     Discount : Discount,  // es6 : 왼쪽오른쪽 항목이 같으므로 그냥 "Discount"만 사용해도 동작
