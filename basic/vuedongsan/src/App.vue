@@ -11,9 +11,10 @@
   <div class="menu">
     <a v-for="menu in menus" :key="menu" >{{ menu }}</a>
   </div>
-  <!-- <div v-for="원룸 in 원룸들" :key="원룸">
-    <Card :원룸="원룸"/>
-  </div> -->
+  
+  <button @click="priceSort">가격순정렬</button>
+  <button @click="sortBack">되돌리기</button>
+
   <Card @openModal="모달창열렸니=true; 누른거=$event" :원룸="원룸" v-for="원룸 in 원룸들" :key="원룸"/>
 
 </span>
@@ -29,8 +30,9 @@ export default {
   name: 'App',
   data(){
     return {    // 변수 만드는 공간
+      원룸들오리지널 : [...oneroom],
+      원룸들 : oneroom,  // shallow copy
       누른거 : 0,
-      원룸들 : oneroom,
       모달창열렸니 : false,
       menus : ['Home', 'Shop', 'About'],
     }
@@ -38,6 +40,14 @@ export default {
   methods: {    // 함수 만드는 공간
     increase(){
       this.신고수++;
+    },
+    priceSort(){
+      this.원룸들.sort(function(a, b){
+        return a.price-b.price;
+      });
+    },
+    sortBack(){
+      this.원룸들 = [...this.원룸들오리지널];
     }
   },
   components: {
