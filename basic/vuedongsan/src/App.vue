@@ -67,11 +67,6 @@ export default {
       this.원룸들 = [...this.원룸들오리지널];
     }
   },
-  mounted(){  //mount 후 
-    setTimeout(()=>{  // setTimeout안에서 this.변수를 가져다 쓰기 위해 arrowF function을 씀 
-      this.showDiscount = false;
-    }, 2000)
-  },
   components: {
     Discount : Discount,  // es6 : 왼쪽오른쪽 항목이 같으므로 그냥 "Discount"만 사용해도 동작
     Modal : Modal,
