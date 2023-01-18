@@ -23,7 +23,7 @@ export default {
         }
     },
     watch : {
-        // esline-disable-next-line no-unused-vars
+        // eslint-disable-next-line no-unused-vars
         month(a, b){    // a: 변경 후 데이터, b: 변경 전 데이터
             if (isNaN(a) == true){
                 alert('문자 입력 금지');
@@ -39,6 +39,12 @@ export default {
         원룸들 : Array,
         누른거 : Number,
         모달창열렸니 : Boolean,
+    },
+    beforeUpdate(){
+        if(this.month == 2){
+            alert('2개월 할부는 안됨');
+            this.month = 3;
+        }
     }
 }
 </script>
