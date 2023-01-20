@@ -31,12 +31,20 @@
       </div>
     </div>
   </nav>
-  <List :블로그="블로그" v-for="블로그 in 블로그글" :key="블로그"/>
+  
+  <router-link to="/">홈페이지</router-link>
+  <router-link to="/list">list 페이지</router-link>
+
+
+  <!-- TODO: 여기에 반복문을 붙이면 안될듯 -->
+  <router-view :블로그="블로그" v-for="블로그 in 블로그글" :key="블로그"></router-view>
+
+  <!-- <List :블로그="블로그" v-for="블로그 in 블로그글" :key="블로그"/> -->
 </div>
 </template>
 
 <script>
-import List from './components/List.vue'
+// import List from './components/List.vue'
 import 블로그글 from './assets/blog.js'
 
 export default {
@@ -44,10 +52,10 @@ export default {
   data(){
     return{
       블로그글 : 블로그글,
-    }
+}
   },
   components: {
-    List: List,
+    // List: List,
   }
 }
 </script>
@@ -59,5 +67,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+.container.mt-4{
+  margin-top: 4px;
 }
 </style>
