@@ -31,31 +31,29 @@
       </div>
     </div>
   </nav>
-  
+
   <router-link to="/">홈페이지</router-link>
-  <router-link to="/list">list 페이지</router-link>
+  <router-link to="/list">리스트페이지</router-link>
 
-
-  <!-- TODO: 여기에 반복문을 붙이면 안될듯 -->
-  <router-view :블로그="블로그" v-for="블로그 in 블로그글" :key="블로그"></router-view>
-
-  <!-- <List :블로그="블로그" v-for="블로그 in 블로그글" :key="블로그"/> -->
+  <div class="mt-4">
+    <router-view ></router-view>
+    <!-- <router-view :블로그글="블로그글" /> -->
+  </div>
+  
 </div>
 </template>
 
 <script>
-// import List from './components/List.vue'
-import 블로그글 from './assets/blog.js'
+import blog from './assets/blog.js';
 
 export default {
   name: 'App',
   data(){
     return{
-      블로그글 : 블로그글,
+      블로그글 : blog,
 }
   },
   components: {
-    // List: List,
   }
 }
 </script>
